@@ -65,7 +65,8 @@ const processOCR = async () => {
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
+          "ngrok-skip-browser-warning": "true"
         }
       }
     );
