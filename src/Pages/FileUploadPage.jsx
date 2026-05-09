@@ -5,7 +5,6 @@ import axios from "axios";
 
 const FileUploadPage = () => {
 
-  const API_URL = "https://imprint-chirping-tassel.ngrok-free.dev";
 
   const [page, setPage] = useState(0);
   const [file, setFile] = useState(null);
@@ -61,7 +60,7 @@ const processOCR = async () => {
     formData.append("file", file);
 
     const response = await axios.post(
-      "API_URL/api/ocr",
+      "https://imprint-chirping-tassel.ngrok-free.dev/api/ocr",
       //"http://127.0.0.1:8000/api/ocr",
       formData,
       {
@@ -116,6 +115,13 @@ const processOCR = async () => {
       {/* Card */}
       <div className='card'>
 
+        {/* ADD THIS 👇 */}
+        {loading && (
+          <div className='loading-overlay'>
+            <div className='spinner'></div>
+            <p>Running OCR...</p>
+          </div>
+        )}
         {/* Page 0 - Upload */}
         {page === 0 && (
           <div
